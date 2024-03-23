@@ -28,7 +28,6 @@ body {
   color: #666;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 30px;
 }
 
 .stories-grid {
@@ -45,6 +44,9 @@ body {
 }
 
 .story-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-basis: calc(30% - 20px);
   max-width: calc(33.333% - 20px);
   position: relative;
@@ -65,27 +67,31 @@ body {
 }
 
 .story-image {
-  width: 100%;
+  width: 90%;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .story-title {
-  font-size: 24px;
-  color: #333;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .story-snippet {
   font-size: 16px;
   color: #666;
+  text-align: center;
 }
 
 .box {
   width: 100%;
   height: 50vmin;
   display: flex;
-  gap: 20px; /* This creates space between the items */
+  gap: 20px;
   margin-bottom: 20px;
   min-width: 0;
   place-content: center;
@@ -110,4 +116,61 @@ body {
 
 &:hover {
   animation-play-state: paused;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin: 20px 0;
+  width: 100%;
+}
+
+
+.btn-12 {
+  position: relative;
+  border: none;
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  perspective: 230px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; 
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn-12 span {
+  display: block;
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  color: white;
+  background: linear-gradient(45deg, #08f, #f03); 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-12 span:nth-child(1) {
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -20px;
+}
+
+.btn-12 span:nth-child(2) {
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -20px;
+}
+
+.btn-12:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+
+.btn-12:hover span:nth-child(2) {
+  color: transparent; 
+  transform: rotateX(-90deg);
 }
