@@ -1,64 +1,144 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Raleway:wght@400;700&display=swap');
 
-.Modal {
-    background-color: #1a1a1a;
-    color: white;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 500px;
-    margin: auto;
-  }
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input[type="text"],
-  textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #2a2a2a;
-    color: white;
-    font-family: Plus Jakarta Sans;
-  }
-  
-  textarea {
-    resize: vertical; 
-  }
-  
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    align-self: flex-end; 
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
 
-  .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@media (max-width: 600px) {
+  .ReactModal__Content {
+    width: 90%;
   }
-  
-  .add-story-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-story-button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+.modal-wrapper {
+  background: transparent;
+  border: 5px solid transparent; 
+  border-image: linear-gradient(45deg, #08f, #f03) 1; 
+  border-radius: 20px;
+  padding: 10px; 
+  max-width: 500px; 
+  height: auto;
+  min-height: 200px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: auto; 
+}
+
+.custom-modal-content {
+  background-color: #333; 
+  width: calc(100% - 10px); 
+  height: auto;
+  margin: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  padding: 20px; 
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+input[type="text"],
+textarea {
+  border-radius: 15px;
+  padding: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  background-color: #2a2a2a;
+  color: white;
+  font-family: Plus Jakarta Sans;
+}
+
+textarea[name="fullStory"] {
+  height: 200px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-input-container input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.custom-file-upload {
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #08f;
+  color: white;
+  border-radius: 15px;
+  align-self: center;
+  justify-content: center; 
+  margin-bottom: 10px; 
+}
+
+
+.cube-button {
+  position: relative;
+  border: none;
+  width: 160px;
+  height: 50px;
+  line-height: 40px;
+  perspective: 230px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; 
+  cursor: pointer;
+  background-color: transparent;
+  font-family: Plus Jakarta Sans;
+  font-size: 20px;
+}
+
+.cube-button span {
+  display: block;
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  color: white;
+  background: linear-gradient(45deg, #08f, #f03); 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cube-button span:nth-child(1) {
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -20px;
+}
+
+.cube-button span:nth-child(2) {
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -20px;
+}
+
+.cube-button:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+
+.cube-button:hover span:nth-child(2) {
+  color: transparent; 
+  transform: rotateX(-90deg);
+}
