@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 import '../styles/add-story-modal-styles.css';
 
 Modal.setAppElement('#__next');
@@ -10,19 +11,28 @@ function AddStoryModal({ modalIsOpen, setModalIsOpen, newStory, setNewStory, add
     setNewStory({ ...newStory, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addNewStory(newStory);
-    setModalIsOpen(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    try {
+      const response = await axios.post('http://localhost:3001/api/stories', newStory);
+      console.log('Response data:', response.data);
+    addNewStory(response.data);
     setNewStory({
       title: '',
       snippet: '',
-      imageUrl: newStory.imageUrl,
+      imageUrl: '',
       organization: '',
       donor: '',
-      fullStory: ''
+      fullStory: '',
     });
+      setModalIsOpen(false); // Close the modal
+    } catch (error) {
+      console.error('Error adding new story:', error);
+    }
+    setModalIsOpen(false); // Close the modal
   };
+  
+  
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
