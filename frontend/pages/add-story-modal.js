@@ -14,7 +14,7 @@ function AddStoryModal({ modalIsOpen, setModalIsOpen, newStory, setNewStory, add
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
     try {
-      const response = await axios.post('http://localhost:3001/api/stories', newStory);
+      const response = await axios.post('http://localhost:3001/stories', newStory);
       console.log('Response data:', response.data);
     addNewStory(response.data);
     setNewStory({
@@ -67,3 +67,4 @@ function AddStoryModal({ modalIsOpen, setModalIsOpen, newStory, setNewStory, add
 }
 
 export default AddStoryModal;
+

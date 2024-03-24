@@ -23,17 +23,31 @@ export default function ImpactStories() {
         }
     ]);
 
-    useEffect(() => {
-        const fetchStories = async () => {
-            try {
-                const response = await axios.get('/api/stories');
-                setStories(response.data);
-            } catch (error) {
-                console.error('Error fetching stories:', error);
-            }
-        };
-        fetchStories();
-    }, []);
+    // Fetching stories
+useEffect(() => {
+    fetch('http://localhost:3001/stories')
+
+        .then(response => response.json())
+        .then(data => setStories(data))
+        .catch(error => console.error('Error fetching stories:', error));
+}, []);
+
+// Posting a new story
+const addNewStory = (story) => {
+    fetch('http://localhost:3001/stories', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(story),
+    })
+    .then(response => response.json())
+    .then(data => {
+        setStories([...stories, data]);
+    })
+    .catch(error => console.error('Error adding story:', error));
+};
+
 
     const [newStory, setNewStory] = useState({
         title: '',
@@ -44,12 +58,19 @@ export default function ImpactStories() {
         fullStory: ''
     });
 
-    const addNewStory = (story) => {
-        setStories((prevStories) => [...prevStories, story]);
-        setModalIsOpen(false);
-        setRenderKey((prevKey) => prevKey + 1); // Force re-render
-    };
-
+    // const addNewStory = (story) => {
+    //     setStories((prevStories) => [...prevStories, story]);
+    //     setNewStory({
+    //         title: '',
+    //         snippet: '',
+    //         imageUrl: '',
+    //         organization: '',
+    //         donor: '',
+    //         fullStory: ''
+    //     });
+    //     setModalIsOpen(false);
+    // };
+    
     return (
         <div className="container">
             <h1 className="title">Impact Stories</h1>
@@ -82,3 +103,4 @@ export default function ImpactStories() {
         </div>
     );
 }
+
