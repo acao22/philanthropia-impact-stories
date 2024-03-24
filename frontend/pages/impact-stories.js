@@ -3,7 +3,7 @@
 // import { keyframes } from 'styled-components';
 import React, { useState } from 'react';
 import AddStoryModal from './add-story-modal';
-import './styles/impact-stories-styles.css';
+import '../styles/impact-stories-styles.css';
 
 export default function ImpactStories() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -53,7 +53,7 @@ export default function ImpactStories() {
                 Every donation has a story -– Discover the narratives of change!
             </p>
             <div className="button-container">
-                <button className="custom-btn btn-12" onClick={() => setModalIsOpen(true)}>
+                <button className="cube-button" onClick={() => setModalIsOpen(true)}>
                     <span>click here!</span>
                     <span>tell your story</span>
                 </button>

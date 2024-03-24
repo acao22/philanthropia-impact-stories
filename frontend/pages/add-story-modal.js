@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './styles/add-story-modal-styles.css';
+import '../styles/add-story-modal-styles.css';
 
 Modal.setAppElement('#__next');
 
